@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-
-import Feelings from '../Feelings/Feelings'
-import Understanding from '../Understanding/Understanding'
 import{ HashRouter as Router, Route, Link} from 'react-router-dom';
+
+import Feelings from '../Feelings/Feelings';
+import Understanding from '../Understanding/Understanding';
+import Supported from '../Supported/Supported';
+
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
       <nav>
       <Link to="/Understanding">Understanding</Link>
       <Link to="/Feelings">Feelings</Link>
+      <Link to="/Supported">Supported</Link>
       </nav>
         
       <Route exact path="/Understanding">
@@ -29,6 +32,10 @@ function App() {
 
       <Route exact path="/Feelings">
       <Feelings />
+      </Route>
+
+      <Route exact path="/Supported">
+      <Supported />
       </Route>
 
       </Router>
