@@ -10,7 +10,9 @@ function Understanding() {
         dispatch({
             type: 'ADD_UNDERSTANDING',
             payload: understanding
-        })
+        });
+
+        setUnderstanding("");
 }
 
 return(
