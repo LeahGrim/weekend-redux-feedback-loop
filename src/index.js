@@ -3,19 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
+
+//import redux
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 
 let formState = {
-    feeling: ''
+    feeling: "",
+    understanding: ""
 }
 
 const formReducer = (state = formState, action) => {
     switch (action.type) {
         case 'ADD_FEELING':
             return state = {...state, feeling: action.payload}
+        case 'ADD_UNDERSTANDING'  :
+            return state = {...state, understanding: action.payload}  
     }
     return state;
 }
@@ -30,12 +35,11 @@ const store = createStore(
 
 
 ReactDOM.render(
-    <React.StrictMode>
+   
     <Provider store={store}>
-        <App />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root'));
-    registerServiceWorker();
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
 
