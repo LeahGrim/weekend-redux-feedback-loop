@@ -8,7 +8,7 @@ import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
-
+import ThankYou from '../Thankyou/Thankyou';
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
       <Link to="/Supported">Supported</Link>
       <Link to="Comments">Comments</Link>
       <Link to="/Review">Review</Link>
+      <Link to="ThankYou">ThankYou</Link>
       </nav>
         
       <Route exact path="/Understanding">
@@ -48,6 +49,10 @@ function App() {
 
       <Route exact path="/Review">
       <Review />
+      </Route>
+
+      <Route exact path="/ThankYou">
+      <ThankYou />
       </Route>
 
       </Router>

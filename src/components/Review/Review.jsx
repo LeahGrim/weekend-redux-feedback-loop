@@ -1,10 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 function Review () {
     const dispatch = useDispatch();
+    const review = useSelector((store) => store.formState)
+
 
     const submit = () => {
-        console.log('submit');
+     axios.post("/feedback", review)
+     .then((res) => {
+         console.log("POST /feedback", res);
+     })
+     .catch((err) => {
+         console.error("POST /feedback", err);
+     })
     }
 
     return (
