@@ -19,16 +19,16 @@ let formState = {
 
 const formReducer = (state = formState, action) => {
     switch (action.type) {
-        case 'ADD_FEELING':
+        case "ADD_FEELING"   :
             return state = {...state, feeling: action.payload}
             
-        case 'ADD_UNDERSTANDING'  :
+        case "ADD_UNDERSTANDING"  :
             return state = {...state, understanding: action.payload}  
 
-         case 'ADD_SUPPORTED'  :
+         case "ADD_SUPPORTED" :
                 return state = {...state, supported: action.payload}  
 
-        case 'ADD_COMMENTS'  :
+        case "ADD_COMMENTS"  :
             return state = {...state, comments: action.payload}    
 
 
