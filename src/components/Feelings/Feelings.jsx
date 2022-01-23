@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 
 function Feelings () {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [feeling, setFeeling] = useState('');
 
@@ -13,6 +15,7 @@ function Feelings () {
             type: 'ADD_FEELINGS',
             payload: feeling
         })
+        history.push("/Supported")
 
     }
 
@@ -34,7 +37,7 @@ function Feelings () {
         onChange={(event) =>setFeeling(event.target.value)}
         placeholder='Feeling'
         />
-        <button className="NextBtn" type="submit">Next</button>
+        <button disabled={!feeling} className="NextBtn" type="submit">Next</button>
     </form>
         </div>
     )

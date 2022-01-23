@@ -1,7 +1,9 @@
 import {useState} from 'react';
 import { useDispatch} from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 function Understanding() {
+    const history = useHistory();
     const dispatch = useDispatch();
     const [understanding, setUnderstanding] = useState('');
 
@@ -11,7 +13,7 @@ function Understanding() {
             type: 'ADD_UNDERSTANDING',
             payload: understanding
         });
-
+        history.push("/Feelings")
         setUnderstanding("");
 }
 
@@ -24,7 +26,7 @@ return(
         <input 
         onKeyPress={(event) => {
             if (!/[0-5]/.test(event.key)) {
-                event.preventDefault();
+            event.preventDefault();
             }
         }}
         type="text"
@@ -33,7 +35,7 @@ return(
         onChange={(event) =>setUnderstanding(event.target.value)}
         placeholder='Understanding?'
         />
-        <button className="NextBtn" type="submit">Next</button>
+        <button disabled={!understanding} className="NextBtn" type="submit">Next</button>
     </form>
     </div>
     

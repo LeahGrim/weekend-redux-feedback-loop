@@ -19,36 +19,40 @@ import logger from 'redux-logger';
 // }
 
  
-let feedback = {
-    feeling: "",
-    understanding: "",
-    supported: "",
-    comments: "",
-}
-
-const feedbackReducer = (state = [feedback], action) => {
+const feedbackReducer = (
+    state = {
+        feeling: "",
+        understanding: "",
+        support: "",
+        comments: "",
+    },
+        action) => {
     switch (action.type) {
-        case "ADD_FEELINGS"   :
-            return state = {...state, feeling: action.payload}
+        case "ADD_FEELINGS":
             
-        case "ADD_UNDERSTANDING"  :
-            return state = {...state, understanding: action.payload}  
+            return {...state, feeling: (state.feeling= action.payload)}
+        case "EMPTY":
+           return feedbackReducer
+            
+        case "ADD_UNDERSTANDING":
+            return {...state, understanding:(state.understanding= action.payload)}  
 
-         case "ADD_SUPPORTED" :
-                return state = {...state, supported: action.payload}  
+         case "ADD_SUPPORTED":
+                return {...state, support:(state.support= action.payload)}  
 
-        case "ADD_COMMENTS"  :
-            return state = {...state, comments: action.payload}    
+        case "ADD_COMMENTS":
+            return {...state, comments:(state.comments= action.payload)}    
 
 
     }
     return state;
+    
 }
 
 
 const store = createStore(
     combineReducers({
-        feedbackReducer
+        feedbackReducer: feedbackReducer,
     }),
     applyMiddleware(logger),
 )

@@ -1,10 +1,16 @@
 import { useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 function ThankYou () {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const reset = () => {
         console.log("submitted");
+        history.push("/")
+        dispatch ({
+            type: "EMPTY"
+        })
     };
 
     return (
