@@ -1,13 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { useHistory} from "react-router-dom";
+import React from "react";
 
 function Review () {
+    const history = useHistory();
     const dispatch = useDispatch();
-    const review = useSelector((store) => store.formState)
+    const feedback = useSelector((store) => store.feedbackReducer)
 
 
-    const submit = () => {
-     axios.post("/feedback", review)
+    const onHandleSubmit = () => {
+     axios.post("/feedback", feedback)
      .then((res) => {
          console.log("POST /feedback", res);
      })
@@ -19,8 +22,13 @@ function Review () {
     return (
         <div>
             <h2>Review your Feedback</h2>
+            <p>Feelings: {feedback.feeling}</p>
+            <p>Understanding: {feedback.understanding}</p>
+            <p>Supported: {feedback.supported}</p>
+            <p>Comments: {feedback.comments}</p>
 
-            <button onClick={submit}>NEXT</button>
+
+            <button onClick={onHandleSubmit}>SUBMIT</button>
             <br></br>
         </div>
     )
