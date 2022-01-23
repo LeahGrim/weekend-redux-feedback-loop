@@ -7,6 +7,7 @@ import Feelings from '../Feelings/Feelings';
 import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
+import Review from '../Review/Review';
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Link to="/Feelings">Feelings</Link>
       <Link to="/Supported">Supported</Link>
       <Link to="Comments">Comments</Link>
+      <Link to="/Review">Review</Link>
       </nav>
         
       <Route exact path="/Understanding">
@@ -42,6 +44,10 @@ function App() {
 
       <Route exact path="/Comments">
       <Comments />
+      </Route>
+
+      <Route exact path="/Review">
+      <Review />
       </Route>
 
       </Router>
