@@ -15,15 +15,17 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-   let newFeedback = req.body
-   console.log("adding feedback", newFeedback);
+   let feeling = req.body.feeling;
+   let understanding = req.body.understanding;
+   let support = req.body.support;
+   let comments = req.body.comments;
 
    let queryText = `
    INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
    VALUES ($1, $2, $3, $4);`;
    
-pool.query(queryText,[newFeedback.feeling, newFeedback.understanding, newFeedback.support, newFeedback.comments])
-.then(result => {
+pool.query(queryText,[feeling, understanding, support, comments])
+.then((result) => {
     res.sendStatus(201);
 })
 .catch(error => {

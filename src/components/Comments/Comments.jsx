@@ -1,8 +1,11 @@
 import React, {useState} from "react";
 import { useSelector, useDispatch} from "react-redux";
+import { useHistory} from "react-router-dom";
 
 function Comments () {
     const dispatch = useDispatch();
+    const history = useHistory();
+   // const feedback = useSelector((store) => store.feedback)
 
     const [comments, setComments] = useState("");
 
@@ -12,13 +15,14 @@ function Comments () {
             type: 'ADD_COMMENTS',
             payload: comments,
         });
-
         setComments("");
+        history.push("/Review")
+
 };
 
 return(
     <div>
-        <h2>Any comments you want to leave</h2>
+        <h2>Any comments you want to leave?</h2>
         <form onSubmit={handleChange}>
         <input 
         type ="text"

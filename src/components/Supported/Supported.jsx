@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 
 function Supported() {
 const dispatch = useDispatch();
+const history = useHistory();
 
 const [supported, setSupported] = useState("");
 
@@ -14,6 +16,8 @@ const handleChange = (event) => {
         payload: supported,
     });
     setSupported("");
+    history.push("/Comments")
+
 }
 return(
     <div>
@@ -32,7 +36,7 @@ return(
         onChange={(event) =>setSupported(event.target.value)}
         placeholder='Supported?'
         />
-        <button className="NextBtn" type="submit">Next</button>
+        <button disabled={!supported} className="NextBtn" type="submit">Next</button>
         </form>
     </div>
 );
