@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import { useDispatch } from "react-redux";
+import {useEffect} from "react";
 import{ HashRouter as Router, Route, Link} from 'react-router-dom';
 
 import Feelings from '../Feelings/Feelings';
@@ -12,6 +14,29 @@ import ThankYou from '../Thankyou/Thankyou';
 
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+   fetchFeedBack();
+  }, []) 
+
+  const fetchFeedBack = () => {
+    console.log("in fetchFeedBack", fetchFeedBack);
+
+    //send request to server side.
+    axios.get("/api/feedback")
+    .then((res) => {
+      console.log("feedback from database", res.data);
+
+      //send data to feedback reducer.
+      dispatch({
+        type: "SET_FEEDBACK",
+        payload: res.data
+      })
+    }).catch((error) => {
+      console.log("axios GET error", error);
+    })
+  }
 
   return (
 
